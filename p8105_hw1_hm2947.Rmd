@@ -5,4 +5,20 @@ date: "2022-09-24"
 output: github_document
 ---
 
+```{r, eval=FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+## `r The penguins data set contains equal number of categorical variables as the numerical variables. As I noticed, the year range is about 2 years from 2007 to 2009. The penguins are sourced from three islands named: "Torgersen", "Biscoe" and "Dream" varied by 3 species: "Adelie", "Gentoo", and "Chinstrap". Each penguin's bill length and depth are measured, their body mass and flipper length are also recorded. This data set has got 344 rows and 8 columns. The mean flipper length is 200.9mm which is very close to its median 197, so it should look nearly symmetric. `
+
+```{r}
+nrow(penguins)
+ncol(penguins)
+summary(penguins)
+```
 
