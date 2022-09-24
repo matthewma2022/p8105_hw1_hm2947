@@ -54,6 +54,9 @@ summary(df)
 ## `r While trying to take the means of the variables, the numeric variable random sample works, the character and factor variables do not. To my surprise, the logic factor also works.`
 
 ```{r, eval = }
-
+as.numeric(df$vec_logic)
+as.numeric(df$vec_char)
+as.numeric(df$vec_fac)
 ```
 
+## `r The logic vector is successfully converted to numeric variable while the other two character and factor variables do not succeed the process. This happens because the character and factor variables are categorical variables which do not contain numeric values, so that they could not be taken means off of. This does explain the failure of taking means in the previous attempt.`
