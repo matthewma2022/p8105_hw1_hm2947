@@ -22,3 +22,38 @@ ncol(penguins)
 summary(penguins)
 ```
 
+```{r}
+ggplot() + 
+  geom_point(data = penguins, mapping = aes( x = bill_length_mm, y = 
+  flipper_length_mm, color = species))
+ggsave("scatterplot.pdf")
+```
+
+```{r}
+
+df = tibble(
+  rs = rnorm(10),
+  vec_logic = rs > 0,
+  vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  vec_fac = c( "low", "medium", "high", "low", "medium", "high", "low", "medium", "high", "low")
+)
+
+pull(df, var = rs)
+pull(df, var = vec_logic)
+pull(df, var = vec_char)
+pull(df, var = vec_fac)
+
+mean(df$rs)
+mean(df$vec_logic)
+mean(df$vec_char)
+mean(df$vec_fac)
+summary(df)
+
+```
+
+## `r While trying to take the means of the variables, the numeric variable random sample works, the character and factor variables do not. To my surprise, the logic factor also works.`
+
+```{r, eval = }
+
+```
+
