@@ -5,29 +5,37 @@ date: "2022-09-24"
 output: github_document
 ---
 
-```{r, eval=FALSE}
+# Problem 1
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
 
 ```{r}
 data("penguins", package = "palmerpenguins")
+row_penguins = nrow(penguins)
+col_penguins = ncol(penguins)
+mean_flipper_length = mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
 
-## `r The penguins data set contains equal number of categorical variables as the numerical variables. As I noticed, the year range is about 2 years from 2007 to 2009. The penguins are sourced from three islands named: "Torgersen", "Biscoe" and "Dream" varied by 3 species: "Adelie", "Gentoo", and "Chinstrap". Each penguin's bill length and depth are measured, their body mass and flipper length are also recorded. This data set has got 344 rows and 8 columns. The mean flipper length is 200.9mm which is very close to its median 197, so it should look nearly symmetric. `
+## The penguins data set contains equal number of categorical variables as the numerical variables. As I noticed, the year range is about 2 years from 2007 to 2009. The penguins are sourced from three islands named: "Torgersen", "Biscoe" and "Dream" varied by 3 species: "Adelie", "Gentoo", and "Chinstrap". Each penguin's bill length and depth are measured, their body mass and flipper length are also recorded. The size of penguins is `r row_penguins` rows and `r col_penguins` lines. The mean flipper length is `r mean_flipper_length`mm which is very close to its median 197, so it should look nearly symmetric. 
 
-```{r}
-nrow(penguins)
-ncol(penguins)
-summary(penguins)
-```
+
+
+# Make a scatterplot
 
 ```{r}
 ggplot() + 
   geom_point(data = penguins, mapping = aes( x = bill_length_mm, y = 
   flipper_length_mm, color = species))
+
 ggsave("scatterplot.pdf")
 ```
+
+# Problem2
+## Make a dataframe and take means
 
 ```{r}
 
@@ -47,16 +55,15 @@ mean(df$rs)
 mean(df$vec_logic)
 mean(df$vec_char)
 mean(df$vec_fac)
-summary(df)
 
 ```
 
-## `r While trying to take the means of the variables, the numeric variable random sample works, the character and factor variables do not. To my surprise, the logic factor also works.`
+## While trying to take the means of the variables, the numeric variable random sample works, the character and factor variables do not. To my surprise, the logic factor also works.
 
-```{r, eval = }
+```{r, eval = FALSE}
 as.numeric(df$vec_logic)
 as.numeric(df$vec_char)
 as.numeric(df$vec_fac)
 ```
 
-## `r The logic vector is successfully converted to numeric variable while the other two character and factor variables do not succeed the process. This happens because the character and factor variables are categorical variables which do not contain numeric values, so that they could not be taken means off of. This does explain the failure of taking means in the previous attempt.`
+## The logic vector is successfully converted to numeric variable while the other two character and factor variables do not succeed the process. This happens because the character and factor variables are categorical variables which do not contain numeric values, so that they could not be taken means off of. This does explain the failure of taking means in the previous attempt.
